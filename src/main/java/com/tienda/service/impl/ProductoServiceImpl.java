@@ -10,20 +10,20 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ProductoServiceImpl implements ProductoService {
-    
+
     @Autowired
     private ProductoDao productoDao;
 
     @Override
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     public List<Producto> getProductos(boolean activos) {
-        var lista=productoDao.findAll();
+        var lista = productoDao.findAll();
         if (activos) {
-           lista.removeIf(e -> !e.isActivo());
+            lista.removeIf(e -> !e.isActivo());
         }
         return lista;
     }
-    
+
     @Override
     @Transactional(readOnly = true)
     public Producto getProducto(Producto producto) {
@@ -41,4 +41,12 @@ public class ProductoServiceImpl implements ProductoService {
     public void delete(Producto producto) {
         productoDao.delete(producto);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> findByPrecioBetweenOrderByDescripcion(double precioInf, double precioSup) {
+        return productoDao.findByPrecioBetweenOrderByDescripcion(precioInf, precioSup);
+    }
 }
+
+
