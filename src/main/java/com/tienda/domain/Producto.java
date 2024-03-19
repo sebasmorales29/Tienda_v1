@@ -25,7 +25,7 @@ public class Producto implements Serializable { //serializacion porque se va alm
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Los valores generados que estrategia usan, identico a la BD 
     @Column(name = "id_producto") //decir cual es el nombre en la base de datos. Se hace la asociación 
     private long idProducto;
-    private long idCategoria;
+    //private long idCategoria;
     private String descripcion;
     private String detalle;
     private double precio;
