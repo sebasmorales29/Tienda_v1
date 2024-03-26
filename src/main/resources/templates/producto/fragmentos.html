@@ -10,7 +10,7 @@
         <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">   
+                    <div class="col-md-3" sec:authorize='hasRole("ROLE_ADMIN")'>   
                         <button 
                             type="button" 
                             class="btn btn-primary btn-block" 
@@ -98,7 +98,7 @@
                                             <th>[[#{producto.precio}]]</th>
                                             <th>[[#{producto.existencias}]]</th>
                                             <th>[[#{producto.activo}]]</th>
-                                            <th>[[#{producto.pruebas}]]</th>
+                                            <th sec:authorize='hasRole("ROLE_ADMIN")'>[[#{producto.pruebas}]]</th>
                                             <th>[[#{producto.total}]]</th>
                                             <th></th></tr>
                                     </thead>
